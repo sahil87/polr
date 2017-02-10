@@ -1,6 +1,6 @@
-/vendor
+Dockerfile
+.git
 bootstrap/cache/
-storage/
 env
 .env
 .env.bak

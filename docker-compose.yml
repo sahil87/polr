@@ -1,0 +1,32 @@
+version: '2'
+services:
+  main:
+    image: sahil87/polr:latest
+    ports:
+      - "8000:80"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mysql
+      - myadmin
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=polr_user
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=polr
+
+  myadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ABSOLUTE_URI=http://localhost:8080
+      - PMA_HOST=polr_mysql_1.polr_default
+      - MYSQL_ROOT_PASSWORD=secret
