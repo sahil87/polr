@@ -13,3 +13,6 @@ RUN cd /src && \
     cp .env.docker .env && \
     composer install -n -d /src && \
     chown -R nginx:nginx /src
+
+#Exposed 81 instead of 80 To prevent conflict with docker-compose's phpmyadmin image
+EXPOSE 81
