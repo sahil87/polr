@@ -7,7 +7,7 @@ RUN apk add --no-cache \
 
 COPY . /src
 COPY polr.nginx.conf /etc/nginx/sites-enabled
-COPY scripts /var/www/html
+COPY scripts /var/www/html/scripts
 
 RUN cd /src && \
     cp .env.docker .env && \
