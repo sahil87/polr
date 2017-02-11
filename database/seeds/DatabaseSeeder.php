@@ -25,13 +25,13 @@ class UserTableSeeder extends Seeder {
     public function run()
     {
         //DB::table('users')->delete();
-
-        User::create(array(
-            'email' => 'polr@admin.tld',
+        DB::table('users')->insert([
             'username' => 'polr',
+            'email' => 'polr@admin.tld',
             'password' => bcrypt('polr'),
-            'role' => 'admin'
-        ));
+            'role' => 'admin',
+            'active' => '1'
+        ]);
     }
 
 }
