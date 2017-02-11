@@ -3,7 +3,7 @@ services:
   main:
     image: sahil87/polr:latest
     ports:
-      - "80:81"
+      - "80:80"
     stdin_open: true
     tty: true
     environment:
