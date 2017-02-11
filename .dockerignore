@@ -7,3 +7,4 @@ env
 .env.example
 composer.phar
 .idea/
+.storage/
