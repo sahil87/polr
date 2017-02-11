@@ -20,7 +20,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_USER=polr
-      - MYSQL_PASSWORD=secret
+      - MYSQL_PASSWORD=polr
       - MYSQL_DATABASE=polr
 
   myadmin:
