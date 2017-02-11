@@ -14,4 +14,4 @@ RUN cd /src && \
     composer install -n -d /src && \
     chown -R nginx:nginx /src
 
-EXPOSE 81
+EXPOSE 80
