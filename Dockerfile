@@ -30,13 +30,11 @@ RUN apt-get update \
 
 #Polr files
 COPY . /src
-COPY docker_related/php.ini /usr/local/etc/php/php.ini
-COPY docker_related/polr.nginx.conf /etc/nginx/conf.d/default.conf
-COPY docker_related/.env.docker /src/.env
+COPY docker_related/ /
 
 RUN cd /src && \
     composer install -n -d /src && \
     chown -R nginx:nginx /src
 
 EXPOSE 80 443
-CMD ["/usr/bin/supervisord", "-n", "-c",  "/src/docker_related/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-n", "-c",  "/supervisord.conf"]
