@@ -8,6 +8,7 @@ services:
     tty: true
     environment:
       - RUN_SCRIPTS=1
+    command: "bash"
     depends_on:
       - mysql
       - myadmin
