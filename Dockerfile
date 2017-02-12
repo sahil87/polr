@@ -1,5 +1,15 @@
 FROM php:7.1-fpm
 
+#Install php extensions
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libpng12-dev \
+    && docker-php-ext-install -j$(nproc) iconv mcrypt pdo_mysql mysqli exif intl xsl json soap dom zip\
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
+
 #START NGINX install from https://github.com/nginxinc/docker-nginx/blob/master/mainline/jessie/Dockerfile
 ENV NGINX_VERSION 1.11.9-1~jessie
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
