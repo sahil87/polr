@@ -6,6 +6,8 @@ services:
       - "80:80"
     stdin_open: true
     tty: true
+    environment:
+      - APP_ADDRESS=localhost
     depends_on:
       mysql:
         condition: service_healthy
