@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
   main:
     image: sahil87/polr:latest
@@ -9,8 +9,10 @@ services:
     environment:
       - RUN_SCRIPTS=1
     depends_on:
-      - mysql
-      - myadmin
+      mysql:
+        condition: service_healthy
+      myadmin:
+        condition: service_started
 
   mysql:
     image: mysql:5.7
@@ -22,6 +24,11 @@ services:
       - MYSQL_USER=polr
       - MYSQL_PASSWORD=polr
       - MYSQL_DATABASE=polr
+    healthcheck:
+      test: ["CMD-SHELL", "test `echo 'SELECT 1' | mysql -hmysql -upolr -ppolr --silent` = '1'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   myadmin:
     image: phpmyadmin/phpmyadmin
@@ -32,5 +39,5 @@ services:
       - mysql
     environment:
       - PMA_ABSOLUTE_URI=http://localhost:8080
-      - PMA_HOST=polr_mysql_1.polr_default
+      - PMA_HOST=mysql
       - MYSQL_ROOT_PASSWORD=secret

@@ -30,7 +30,8 @@ class UserTableSeeder extends Seeder {
             'email' => 'polr@admin.tld',
             'password' => bcrypt('polr'),
             'role' => 'admin',
-            'active' => '1'
+            'active' => '1',
+            'api_key' => '7789835af06daaf863bcdce26e75fe'
         ]);
     }
 
