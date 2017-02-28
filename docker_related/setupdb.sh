@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 cd /src
 sudo -u www-data php artisan migrate -n --force
 sudo -u www-data php artisan db:seed -n --force
