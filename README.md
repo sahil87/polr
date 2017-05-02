@@ -9,7 +9,7 @@ Also consists of a docker-compose to get polr running locally in a single step: 
 **Default password**: `polr` 
 **Default api key**: `7789835af06daaf863bcdce26e75fe`
 
-#####To override settings
+### To override settings
 
 1. Overwrite `/src/.env` in the container for fine grained control
 **or**
