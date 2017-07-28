@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   main:
-    image: sahil87/polr:latest
+    image: sahil87/polr:v1.1
     ports:
       - "80:80"
     stdin_open: true
