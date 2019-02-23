@@ -6,7 +6,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 #Install other dependencies
 RUN apt-get update \
-    && apt-get install -y emacs-nox git sudo supervisor
+    && apt-get install -y emacs-nox git sudo supervisor \
     && rm -rf /var/lib/apt/lists/*
 
 #Install php extensions
