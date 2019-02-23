@@ -1,5 +1,6 @@
-<img src="https://i.imgur.com/ckI6GTu.png" width="350px" alt="Polr Logo" />
+A simple *WORKING* docker setup for polr. Documentation [here](./README_docker.md).
 
+<img src="https://i.imgur.com/ckI6GTu.png" width="350px" alt="Polr Logo" />
 
 :aerial_tramway: A modern, minimalist, and lightweight URL shortener.
 
