@@ -1,13 +1,14 @@
 version: '2.1'
 services:
   main:
-    image: sahil87/polr:v1.1
+    image: sahil87/polr:v1.2
     ports:
       - "80:80"
     stdin_open: true
     tty: true
     environment:
       - APP_ADDRESS=localhost
+      - APP_STYLESHEET=//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css
     depends_on:
       mysql:
         condition: service_healthy
