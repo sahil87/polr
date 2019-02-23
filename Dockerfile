@@ -1,14 +1,6 @@
 FROM php:7.3-fpm
 #based on debian stretch https://hub.docker.com/_/php/
 
-#Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-#Install other dependencies
-RUN apt-get update \
-    && apt-get install -y emacs-nox git sudo supervisor \
-    && rm -rf /var/lib/apt/lists/*
-
 #Install php extensions
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -106,7 +98,7 @@ RUN set -x \
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
 						$nginxPackages \
 						gettext-base \
-	&& apt-get remove --purge --auto-remove -y apt-transport-https ca-certificates && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
+#	&& apt-get remove --purge --auto-remove -y apt-transport-https ca-certificates && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
 	\
 # if we have leftovers from building, let's purge them (including extra, unnecessary build deps)
 	&& if [ -n "$tempDir" ]; then \
@@ -118,6 +110,14 @@ RUN set -x \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 #END NGINX install
+
+#Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+#Install other dependencies
+RUN apt-get update \
+    && apt-get install -y emacs-nox git sudo supervisor \
+    && rm -rf /var/lib/apt/lists/*
 
 #Polr files
 COPY . /src
