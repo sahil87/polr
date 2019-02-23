@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
         libxslt-dev \
         libffi-dev \
         libpq-dev \
+        libzip-dev \
     && pecl install mcrypt-1.0.2 \
     && docker-php-ext-enable mcrypt \
     && docker-php-ext-install -j$(nproc) iconv pdo_mysql mysqli exif intl xsl json soap dom zip \
