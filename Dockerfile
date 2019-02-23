@@ -1,11 +1,12 @@
-FROM php:7.1-fpm
+FROM php:7.3-fpm
+#based on debian stretch https://hub.docker.com/_/php/
 
 #Install php extensions
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng-dev \
         libicu-dev \
         libxslt-dev \
         libffi-dev \
